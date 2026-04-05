@@ -71,8 +71,17 @@ results/ – figures and tables
 reports/ – summary and presentation materials 
 
 
+🔒 Data Availability
+
+The dataset used in this project contains sensitive health-related information and is therefore not publicly available to ensure participant confidentiality and adherence to ethical research standards.
+
+However, the repository includes a structured description of the dataset and analytical approach to support transparency and reproducibility.
+
+Simulated or sample data can be developed upon request for demonstration purposes.
+
+
 ⚠️ Notes
 
-Dataset unavailable publicly to protect participant confidentiality and adhere to ethical research standards 
-
 Findings should be interpreted within the study context
+
+Results reflect a quasi-experimental design and real-world clinical conditions
