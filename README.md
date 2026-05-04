@@ -27,55 +27,55 @@ This repository includes the full set of analytical and reporting outputs:
 
 1. 📄 Full Project Portfolio
 
-    👉 *[View Full Portfolio]("Project Information/Ruth Ushindi - EMDR Intervention Cameroon Data Analysis Portfolio.pdf")*
+      👉 *[View Full Portfolio](Project%20Information/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio.pdf)*
 
    Comprehensive documentation of methodology, analysis, findings, and interpretation.
 
 2. 📊 Statistical Analysis Outputs
 
-    👉 *View SPSS Output File (.spv)*
+      👉 *[View SPSS Output File](Study%20Analysis/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio.spv)* 
 
     Contains detailed statistical results, including model outputs and test statistics.
 
 3. 📝 Analysis Notes
 
-    👉 *View Analysis Notes*
+      👉 *[View Analysis Notes](Study%20Analysis/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Notes.pdf)*
 
    Documentation of analytical steps, decisions, and workflow.
 
 4. 📽️ Findings Presentation
 
-    👉 View Presentation Slides
+      👉 *[View Presentation Slides](Study%20Findings/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Findings%20Presentation.pptx)*
 
     Slides developed to communicate findings clearly for academic assessment and stakeholder understanding.
 
 5. 📂 Dataset Description
 
-    👉 View Data Description
+      👉 *[View Data Description]()*
 
     Overview of dataset structure, variables, and study design (no raw data shared).
 
 6. 📊 Visual Highlights
 
-Selected visualizations illustrate:
+    Selected visualizations illustrate:
 
-PTSD score trends over time
+    - PTSD score trends over time
 
-Differences between treatment and control groups
+    - Differences between treatment and control groups
 
 
 ⚙️ Methods (Summary)
 
-1. Repeated Measures ANOVA
+  1. Repeated Measures ANOVA
 
-2. ANCOVA (baseline adjustment)
+  2. ANCOVA (baseline adjustment)
 
-3. General Linear Models
+  3. General Linear Models
 
 
 🔒 Data Availability
 
-The dataset contains sensitive health-related information and is not publicly shared to ensure confidentiality and adherence to ethical research standards.
+> The dataset contains sensitive health-related information and is not publicly shared to ensure confidentiality and adherence to ethical research standards.
 
 A structured description of the dataset and analytical approach is provided to support transparency.
 
