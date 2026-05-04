@@ -1,87 +1,85 @@
 # EMDR Therapy for PTSD Intervention Study Cameroon 
 
-📊 EMDR Therapy & PTSD Analysis
+📊 EMDR Therapy for PTSD Treatment Analysis
 
-This repository presents a statistical analysis of a quasi-experimental longitudinal study evaluating the effectiveness of EMDR therapy on PTSD among ICU healthcare professionals.
+This repository presents the statistical analysis of a quasi-experimental longitudinal study evaluating the effectiveness of EMDR therapy on PTSD among ICU healthcare professionals.
 
+🔍 Overview
 
-🔍 Project Overview
+  - Design: Quasi-experimental (pre/post control group)
 
-Design: Quasi-experimental (pre/post control group)
+  - Sample: N = 134 ICU healthcare professionals
 
-Sample: N = 134 ICU healthcare professionals
-
-Focus: PTSD, anxiety, depression, and burnout
-
-The analysis aimed to assess intervention effectiveness and generate actionable insights for mental health programming in healthcare settings.
+  - Focus: PTSD, anxiety, depression, and burnout
 
 
-⚙️ Methods
-
-Repeated Measures ANOVA
-
-ANCOVA (baseline adjustment)
-
-General Linear Models (GLM)
-
-Chi-square tests
-
-Tools & Workflow:
-
-Data collected via Google Forms, cleaned in Excel, analyzed in SPSS, with visualizations developed in R.
+  The analysis evaluates intervention effectiveness and translates findings into actionable insights for mental health programming.
 
 
-📈 Key Findings
+📈 Key Insight
 
-PTSD prevalence at baseline: 94.8%
-
-Significant reduction in PTSD scores (40.92 → 8.80) in treatment group
-
-Minimal change in control group
-
-Strong intervention effects (p < .001)
-
-Remission rates: 100% (treatment) vs 5.9% (control)
-
-Clinically meaningful improvement defined as ≥10-point reduction in PCL-5 scores.
+The intervention demonstrated substantial reductions in PTSD symptoms over time, with strong differences observed between treatment and control groups and high remission rates in the treatment group.
 
 
-📊 Visualizations
+📁 Project Deliverables
 
-Key visual outputs include:
+This repository includes the full set of analytical and reporting outputs:
 
-PTSD score trends over time (treatment vs control)
+1. 📄 Full Project Portfolio
 
-Remission rate comparisons 
+    👉 *[View Full Portfolio]("Project Information/Ruth Ushindi - EMDR Intervention Cameroon Data Analysis Portfolio.pdf")*
+
+   Comprehensive documentation of methodology, analysis, findings, and interpretation.
+
+2. 📊 Statistical Analysis Outputs
+
+    👉 *View SPSS Output File (.spv)*
+
+    Contains detailed statistical results, including model outputs and test statistics.
+
+3. 📝 Analysis Notes
+
+    👉 *View Analysis Notes*
+
+   Documentation of analytical steps, decisions, and workflow.
+
+4. 📽️ Findings Presentation
+
+    👉 View Presentation Slides
+
+    Slides developed to communicate findings clearly for academic assessment and stakeholder understanding.
+
+5. 📂 Dataset Description
+
+    👉 View Data Description
+
+    Overview of dataset structure, variables, and study design (no raw data shared).
+
+6. 📊 Visual Highlights
+
+Selected visualizations illustrate:
+
+PTSD score trends over time
+
+Differences between treatment and control groups
 
 
-💡 Impact
+⚙️ Methods (Summary)
 
-This analysis demonstrates the effectiveness of structured mental health interventions in high-stress, resource-constrained healthcare settings and supports evidence-based program and policy decisions.
+1. Repeated Measures ANOVA
 
+2. ANCOVA (baseline adjustment)
 
-📁 Repository Structure
-
-data/ – dataset description  
-
-analysis/ – scripts and outputs
-
-results/ – figures and tables
-
-reports/ – summary and presentation materials 
+3. General Linear Models
 
 
 🔒 Data Availability
 
-The dataset used in this project contains sensitive health-related information and is therefore not publicly available to ensure participant confidentiality and adherence to ethical research standards.
+The dataset contains sensitive health-related information and is not publicly shared to ensure confidentiality and adherence to ethical research standards.
 
-However, the repository includes a structured description of the dataset and analytical approach to support transparency and reproducibility.
-
-Simulated or sample data can be developed upon request for demonstration purposes.
+A structured description of the dataset and analytical approach is provided to support transparency.
 
 
-⚠️ Notes
+💡 Why This Project Matters
 
-Findings should be interpreted within the study context
-
-Results reflect a quasi-experimental design and real-world clinical conditions
+This work demonstrates the application of longitudinal and quasi-experimental analysis to evaluate intervention effectiveness and support evidence-based decision-making in healthcare settings.
