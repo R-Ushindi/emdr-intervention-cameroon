@@ -1,3 +1,4 @@
+![EMDR Therapy for PTSD Treatment Analysis Project Portfolio](Assets/EMDR%20thumbnail.png)
 # EMDR Therapy for PTSD Intervention Study Cameroon 
 
 📊 EMDR Therapy for PTSD Treatment Analysis
