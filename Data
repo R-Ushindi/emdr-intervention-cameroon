@@ -1,6 +1,5 @@
 Dataset Description: EMDR Therapy for PTSD Study
 
----
 
 1. Overview
 
@@ -8,7 +7,6 @@ This dataset was generated as part of a quasi-experimental longitudinal study ev
 
 The study was designed to assess both the prevalence of psychological distress and the effectiveness of a structured intervention over time.
 
----
 
 2. Study Design
 
@@ -23,7 +21,6 @@ The study was designed to assess both the prevalence of psychological distress a
   - Treatment group (received EMDR therapy)
   - Control group (no intervention during study period)
 
----
 
 3. Sample Characteristics
 
@@ -35,7 +32,6 @@ The study was designed to assess both the prevalence of psychological distress a
 
 Participants were selected from a clinical healthcare setting and represent a high-risk population for occupational stress and trauma exposure.
 
----
 
 4. Dataset Structure
 
@@ -45,7 +41,6 @@ Participants were selected from a clinical healthcare setting and represent a hi
 Note:
 The dataset includes both primary (collected) variables and derived variables created during data preparation and analysis. This document focuses on primary and prepared variables relevant to understanding the dataset structure.
 
----
 
 5. Data Type and Format
 
@@ -58,14 +53,12 @@ The dataset includes both primary (collected) variables and derived variables cr
   - Wide format dataset
   - Repeated measures captured as separate variables for each time point
 
----
 
 6. Variable Categories
 
 6.1 Grouping Variable
 - Group: Indicates assignment to Treatment or Control group
 
----
 
 6.2 Participant Characteristics (Demographics)
 - Age: Participant age (years)
@@ -75,7 +68,6 @@ The dataset includes both primary (collected) variables and derived variables cr
 - ICUExperience: Years of experience working in ICU settings
 - HoursWeek: Average number of working hours per week
 
----
 
 6.3 Categorized Demographic Variables
 
@@ -85,7 +77,6 @@ These variables represent grouped versions of continuous measures to support cat
 - ICUExperienceLength: Grouped ICU experience levels
 - WorkingHours: Categorized working hours
 
----
 
 6.4 Mental Health Outcomes (Continuous Measures)
 
@@ -106,7 +97,6 @@ Anxiety:
 - AnxietyMidline
 - AnxietyEndline
 
----
 
 6.5 Burnout Components
 
@@ -126,7 +116,6 @@ Examples:
 - DPBaseline, DPMidline, DPEndline
 - PABaseline, PAMidline, PAEndline
 
----
 
 6.6 Burnout Classification
 
@@ -136,7 +125,6 @@ Categorical burnout status at each time point:
 - BurnoutMidline
 - BurnoutEndline
 
----
 
 7. Data Preparation Notes
 
@@ -145,7 +133,6 @@ Categorical burnout status at each time point:
 - Continuous variables were retained for statistical modeling
 - Selected variables were categorized to support group comparisons and inferential testing
 
----
 
 8. Analytical Readiness
 
@@ -157,7 +144,6 @@ The dataset was structured to support:
 - Repeated measures analysis
 - Covariate adjustment (e.g., baseline control)
 
----
 
 9. Derived Variables
 
@@ -165,7 +151,6 @@ Additional variables (e.g., change scores, response indicators, remission indica
 
 These are not detailed in this document and are instead documented within the analysis notes and statistical outputs.
 
----
 
 10. Data Confidentiality and Ethics
 
@@ -178,7 +163,6 @@ To ensure participant confidentiality:
 
 Access to raw data is restricted in accordance with ethical research standards.
 
----
 
 11. Limitations of the Dataset
 
@@ -188,7 +172,6 @@ Access to raw data is restricted in accordance with ethical research standards.
 
 These considerations should be taken into account when interpreting results.
 
----
 
 12. Usage Notes
 
@@ -199,4 +182,3 @@ This dataset description is provided to support:
 
 It is not intended for direct data replication due to restricted data access.
 
----
