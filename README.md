@@ -76,7 +76,7 @@ A structured description of the dataset and analytical approach is provided to s
 
 📂 Dataset Description
 
- 👉 *[View Data Description]()*
+ 👉 *[View Data Description](Study%20Data/Data%20Description)*
 
   Overview of dataset structure, variables, and study design (no raw data shared).
 
