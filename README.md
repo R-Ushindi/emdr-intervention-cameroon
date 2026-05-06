@@ -50,13 +50,7 @@ This repository includes the full set of analytical and reporting outputs:
 
     Slides developed to communicate findings clearly for academic assessment and stakeholder understanding.
 
-5. 📂 Dataset Description
-
-      👉 *[View Data Description]()*
-
-    Overview of dataset structure, variables, and study design (no raw data shared).
-
-6. 📊 Visual Highlights
+5. 📊 Visual Highlights
 
     Selected visualizations illustrate:
 
@@ -80,7 +74,19 @@ This repository includes the full set of analytical and reporting outputs:
 
 A structured description of the dataset and analytical approach is provided to support transparency.
 
+📂 Dataset Description
+
+ 👉 *[View Data Description]()*
+
+  Overview of dataset structure, variables, and study design (no raw data shared).
+
 
 💡 Why This Project Matters
 
 This work demonstrates the application of longitudinal and quasi-experimental analysis to evaluate intervention effectiveness and support evidence-based decision-making in healthcare settings.
+
+📥 Service Request 
+
+If you would like my assistance with a similar project, reach out through the link below. 
+
+   📲 *[Start a conversation](https://wa.me/254101271315)*
