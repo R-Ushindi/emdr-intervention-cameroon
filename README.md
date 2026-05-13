@@ -7,11 +7,8 @@
 This repository presents the statistical analysis of a quasi-experimental longitudinal study evaluating the effectiveness of EMDR therapy on PTSD among ICU healthcare professionals.
 
 🔍 Overview
-
   - Design: Quasi-experimental (pre/post control group)
-
   - Sample: N = 134 ICU healthcare professionals
-
   - Focus: PTSD, anxiety, depression, and burnout
 
 
@@ -39,27 +36,47 @@ This repository includes the full set of analytical and reporting outputs:
 
     Contains detailed statistical results, including model outputs and test statistics.
 
-3. 📝 Analysis Notes
+4. 📝 Analysis Notes
 
       👉 *[View Analysis Notes](Study%20Analysis/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Notes.pdf)*
 
    Documentation of analytical steps, decisions, and workflow.
 
-4. 📽️ Findings Presentation
+5. 📽️ Findings Presentation
 
       👉 *[View Presentation Slides](Study%20Findings/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Findings%20Presentation.pptx)*
 
     Slides developed to communicate findings clearly for academic assessment and stakeholder understanding.
 
-5. 📊 Visual Highlights
+6. 📊 Visual Highlights
 
-    Selected visualizations illustrate:
+   A structured visualization suite of 8 publication-style visualizations developed in R to communicate:
+    - longitudinal PTSD symptom change,
+    - treatment vs control group differences,
+    - remission outcomes,
+    - individual clinical transitions,
+    - effect sizes across outcomes,
+    - and baseline comorbidity patterns.
 
-    - PTSD score trends over time
+| Baseline prevalence | Symptom reduction |
+|------|------|
+| ![Baseline prevalence](Visualizations/Figure1_Baseline.png) | ![Symptom reduction](Visualiuzations/) |
+| **Variation in PTSD scores** | **Remission outcomes** |
+| ![Variation in PTSD scores](Visualiuzations/) | ![Remission outcomes](Visualiuzations/) |
+| **Clinical transitions** | **Magnitude of treatment effect** |
+| ![Clinical transitions](Visualiuzations/) | ![Magnitude of treatment effect](Visualiuzations/) |
+| **Participant trajectories** | **PTSD and its comorbidities** |
+| ![Participant trajectories](Visualiuzations/) | ![PTSD and its comorbidities](Visualiuzations/) |
 
-    - Differences between treatment and control groups
+  👉 *[View the R visualization script](Visualizations/Ruth Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20|%20R%20Script).txt)* 
 
+  A reproducible analysis script for the visualizations in R. 
+  
+  👉 *[View the R visualization report](Visualizations/Ruth Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20with%20R).pdf)*
 
+  A visualization report explaining the analytical rationale behind each   figure, interpretation of visual findings, statistical meaning of observed patterns, and clinical relevance of intervention outcomes. 
+
+  
 ⚙️ Methods (Summary)
 
   1. Repeated Measures ANOVA
