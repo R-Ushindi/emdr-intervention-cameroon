@@ -1,0 +1,624 @@
+# EMDR PTSD Intervention Analysis
+# Visualization Workflow
+# R version: 4.2.3
+
+# This script contains the code used to generate publication-style visualizations for the EMDR intervention portfolio project.
+
+# Participant-level data is not publicly shared to preserve confidentiality and ethical compliance.
+
+# =========================================================
+# 1. SETUP
+# =========================================================
+
+library(tidyverse)
+library(ggpubr)
+library(UpSetR)
+library(viridis)
+
+# Set working directories
+root <- "Desktop/EMDR_for_PTSD_R_Visualizations"
+
+figures_dir <- file.path(root, "outputs", "figures")
+
+if (!dir.exists(figures_dir)) {
+  dir.create(figures_dir, recursive = TRUE)
+}
+
+# =========================================================
+# 2. LOAD DATA
+# =========================================================
+
+df <- read.csv("EMDR_for_PTSD.csv")
+
+# =========================================================
+# 3. DATA PREPARATION
+# =========================================================
+
+# Convert group variable to factor
+df$Group <- factor(
+  df$Group,
+  levels = c("Control", "Treatment")
+)
+
+# Create participant index
+df$id <- 1:nrow(df)
+
+# Convert burnout status to binary
+# 0 = No burnout
+# 1 = At risk
+
+df$BurnoutBinary <- ifelse(
+  df$BurnoutBaseline == "At risk",
+  1,
+  0
+)
+
+# =========================================================
+# 4. BASELINE PREVALENCE BAR CHART
+# =========================================================
+
+prev_df <- data.frame(
+  Condition = c(
+    "PTSD",
+    "Depression",
+    "Anxiety",
+    "Burnout"
+  ),
+  prop = c(
+    mean(df$PTSDstatusBaseline, na.rm = TRUE),
+    mean(df$DepressionstatusBaseline, na.rm = TRUE),
+    mean(df$AnxietystatusBaseline, na.rm = TRUE),
+    mean(df$BurnoutBinary, na.rm = TRUE)
+  )
+)
+
+n <- nrow(df)
+
+prev_df <- prev_df %>%
+  mutate(
+    se = sqrt(prop * (1 - prop) / n),
+    ci = 1.96 * se,
+    percent = prop * 100
+  )
+
+p1 <- ggplot(
+  prev_df,
+  aes(
+    x = reorder(Condition, percent),
+    y = percent
+  )
+) +
+  geom_col(
+    fill = "steelblue",
+    width = 0.7
+  ) +
+  geom_errorbar(
+    aes(
+      ymin = (prop - ci) * 100,
+      ymax = (prop + ci) * 100
+    ),
+    width = 0.2
+  ) +
+  coord_flip() +
+  labs(
+    y = "Prevalence (%)",
+    x = NULL,
+    caption = "Error bars represent 95% confidence intervals. N = 134."
+  ) +
+  theme_classic(base_size = 12)
+
+ggsave(
+  "outputs/Figure1_Baseline.png",
+  p1,
+  width = 5,
+  height = 4,
+  dpi = 300
+)
+
+# =========================================================
+# 5. GROUP × TIME LINE GRAPH
+# =========================================================
+
+pcl_long <- df %>%
+  select(
+    id,
+    Group,
+    PTSDBaseline,
+    PTSDMidline,
+    PTSDEndline
+  ) %>%
+  pivot_longer(
+    cols = starts_with("PTS"),
+    names_to = "Time",
+    values_to = "PCL"
+  ) %>%
+  mutate(
+    Time = factor(
+      Time,
+      levels = c(
+        "PTSDBaseline",
+        "PTSDMidline",
+        "PTSDEndline"
+      ),
+      labels = c(
+        "Baseline",
+        "Midline",
+        "Endline"
+      )
+    )
+  )
+
+summary_df <- pcl_long %>%
+  group_by(Group, Time) %>%
+  summarise(
+    mean = mean(PCL, na.rm = TRUE),
+    se = sd(PCL, na.rm = TRUE) / sqrt(n()),
+    ci = 1.96 * se,
+    .groups = "drop"
+  )
+
+p2 <- ggplot(
+  summary_df,
+  aes(
+    x = Time,
+    y = mean,
+    color = Group,
+    group = Group
+  )
+) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  geom_errorbar(
+    aes(
+      ymin = mean - ci,
+      ymax = mean + ci
+    ),
+    width = 0.15,
+    linewidth = 0.8
+  ) +
+  geom_hline(
+    yintercept = 33,
+    linetype = "dashed",
+    color = "gray30"
+  ) +
+  annotate(
+    "text",
+    x = 2.8,
+    y = 35,
+    label = "Clinical cutoff (33)",
+    size = 3,
+    hjust = 0
+  ) +
+  annotate(
+    "text",
+    x = 2,
+    y = 48,
+    label = "η²p = .891, p < .001",
+    size = 4,
+    fontface = "italic"
+  ) +
+  scale_color_manual(
+    values = c(
+      "Control" = "#D55E00",
+      "Treatment" = "#0072B2"
+    )
+  ) +
+  labs(
+    y = "Mean PCL-5 Score (±95% CI)",
+    x = "Assessment Time Point",
+    caption = "Error bars represent 95% confidence intervals. N = 134."
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    legend.position = c(0.85, 0.85)
+  )
+
+ggsave(
+  "outputs/Figure2_GroupTime.png",
+  p2,
+  width = 6,
+  height = 4,
+  dpi = 300
+)
+
+# =========================================================
+# 6. RAINCLOUD PLOT
+# =========================================================
+
+p3 <- ggplot(
+  pcl_long,
+  aes(
+    x = Time,
+    y = PCL,
+    fill = Group
+  )
+) +
+  geom_violin(
+    alpha = 0.4,
+    trim = FALSE,
+    scale = "area"
+  ) +
+  geom_boxplot(
+    width = 0.15,
+    outlier.shape = NA,
+    alpha = 0.7,
+    position = position_dodge(0.9)
+  ) +
+  geom_jitter(
+    width = 0.05,
+    alpha = 0.2,
+    size = 0.6
+  ) +
+  facet_wrap(~Group) +
+  scale_fill_viridis_d(
+    option = "D",
+    end = 0.8
+  ) +
+  labs(
+    y = "PCL-5 Score",
+    x = NULL,
+    caption = "Violin = density, box = median/IQR, jitter = individual observations."
+  ) +
+  theme_classic(base_size = 12)
+
+ggsave(
+  "outputs/Figure3_Raincloud.png",
+  p3,
+  width = 8,
+  height = 4,
+  dpi = 300
+)
+
+# =========================================================
+# 7. REMISSION STACKED BAR CHART
+# =========================================================
+
+remission_df <- df %>%
+  mutate(
+    Status = case_when(
+      PTSDremitend == 1 ~ "Remitted",
+      PTSDrespend == 1 ~ "Improved",
+      TRUE ~ "No change"
+    )
+  ) %>%
+  group_by(Group, Status) %>%
+  summarise(
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  group_by(Group) %>%
+  mutate(
+    percent = n / sum(n) * 100
+  )
+
+p4 <- ggplot(
+  remission_df,
+  aes(
+    x = Group,
+    y = percent,
+    fill = Status
+  )
+) +
+  geom_col(width = 0.7) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    y = "Percentage (%)",
+    caption = "Remission = PCL-5 < 33 at endline."
+  ) +
+  theme_classic(base_size = 12)
+
+ggsave(
+  "outputs/Figure4_Remission.png",
+  p4,
+  width = 5,
+  height = 4,
+  dpi = 300
+)
+
+# =========================================================
+# 8. CLINICAL THRESHOLD CROSSOVER HEATMAP
+# =========================================================
+
+crossover <- pcl_long %>%
+  mutate(
+    Status = ifelse(
+      PCL >= 33,
+      "Clinical",
+      "Subclinical"
+    )
+  )
+
+p5 <- ggplot(
+  crossover,
+  aes(
+    x = Time,
+    y = factor(id),
+    fill = Status
+  )
+) +
+  geom_tile() +
+  facet_wrap(
+    ~Group,
+    scales = "free_y"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Clinical" = "#D55E00",
+      "Subclinical" = "#0072B2"
+    )
+  ) +
+  labs(
+    y = "Participant Index",
+    fill = "Status",
+    caption = "Color changes indicate movement across the clinical cutoff threshold."
+  ) +
+  theme_classic(base_size = 10) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+ggsave(
+  "outputs/Figure5_Crossover.png",
+  p5,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
+
+# =========================================================
+# 9. FOREST PLOT OF EFFECT SIZES
+# =========================================================
+
+# Continuous outcomes
+cohens_d_cont <- function(x, y) {
+
+  n1 <- length(x)
+  n2 <- length(y)
+
+  m1 <- mean(x, na.rm = TRUE)
+  m2 <- mean(y, na.rm = TRUE)
+
+  sd1 <- sd(x, na.rm = TRUE)
+  sd2 <- sd(y, na.rm = TRUE)
+
+  pooled_sd <- sqrt(
+    ((n1 - 1) * sd1^2 +
+       (n2 - 1) * sd2^2) /
+      (n1 + n2 - 2)
+  )
+
+  d <- (m2 - m1) / pooled_sd
+
+  # Hedges correction
+  J <- 1 - (3 / (4 * (n1 + n2 - 2) - 1))
+
+  d_corrected <- d * J
+
+  se <- sqrt(
+    (n1 + n2) / (n1 * n2) +
+      (d_corrected^2) /
+      (2 * (n1 + n2))
+  )
+
+  c(
+    d = d_corrected,
+    lower = d_corrected - 1.96 * se,
+    upper = d_corrected + 1.96 * se
+  )
+}
+
+# Binary outcome approximation
+cohens_d_binary <- function(ctrl_vec, trt_vec) {
+
+  p1 <- mean(ctrl_vec, na.rm = TRUE)
+  p2 <- mean(trt_vec, na.rm = TRUE)
+
+  n1 <- sum(!is.na(ctrl_vec))
+  n2 <- sum(!is.na(trt_vec))
+
+  p_bar <- (p1 * n1 + p2 * n2) / (n1 + n2)
+
+  h <- 2 * asin(sqrt(p2)) -
+    2 * asin(sqrt(p1))
+
+  d <- h / 1.65
+
+  se <- sqrt(
+    (p1 * (1 - p1) / n1) +
+      (p2 * (1 - p2) / n2)
+  ) / sqrt(p_bar * (1 - p_bar))
+
+  c(
+    d = d,
+    lower = d - 1.96 * se,
+    upper = d + 1.96 * se
+  )
+}
+
+# Split data by group
+ctrl <- df[df$Group == "Control", ]
+trt  <- df[df$Group == "Treatment", ]
+
+# Compute effect sizes
+d_ptsd <- cohens_d_cont(
+  ctrl$PTSDEndline,
+  trt$PTSDEndline
+)
+
+d_dep <- cohens_d_cont(
+  ctrl$DepressionEndline,
+  trt$DepressionEndline
+)
+
+d_anx <- cohens_d_cont(
+  ctrl$AnxietyEndline,
+  trt$AnxietyEndline
+)
+
+ctrl_burn <- ifelse(
+  ctrl$BurnoutBaseline == "At risk",
+  1,
+  0
+)
+
+trt_burn <- ifelse(
+  trt$BurnoutBaseline == "At risk",
+  1,
+  0
+)
+
+d_burn <- cohens_d_binary(
+  ctrl_burn,
+  trt_burn
+)
+
+forest_data <- data.frame(
+  Outcome = c(
+    "PTSD",
+    "Depression",
+    "Anxiety",
+    "Burnout"
+  ),
+  d = c(
+    d_ptsd["d"],
+    d_dep["d"],
+    d_anx["d"],
+    d_burn["d"]
+  ),
+  lower = c(
+    d_ptsd["lower"],
+    d_dep["lower"],
+    d_anx["lower"],
+    d_burn["lower"]
+  ),
+  upper = c(
+    d_ptsd["upper"],
+    d_dep["upper"],
+    d_anx["upper"],
+    d_burn["upper"]
+  )
+)
+
+p6 <- ggplot(
+  forest_data,
+  aes(
+    x = d,
+    y = reorder(Outcome, d)
+  )
+) +
+  geom_vline(
+    xintercept = 0,
+    linetype = "dashed"
+  ) +
+  geom_point(
+    size = 3,
+    color = "#0072B2"
+  ) +
+  geom_errorbarh(
+    aes(
+      xmin = lower,
+      xmax = upper
+    ),
+    height = 0.2,
+    linewidth = 0.8
+  ) +
+  labs(
+    x = "Cohen's d (95% CI)",
+    y = NULL,
+    caption = "Positive effect sizes favor treatment."
+  ) +
+  theme_classic(base_size = 12)
+
+ggsave(
+  "outputs/Figure6_Forest.png",
+  p6,
+  width = 6,
+  height = 4,
+  dpi = 300
+)
+
+# =========================================================
+# 10. SPAGHETTI PLOT
+# =========================================================
+
+p7 <- ggplot(
+  pcl_long,
+  aes(
+    x = Time,
+    y = PCL,
+    group = id,
+    color = Group
+  )
+) +
+  geom_line(
+    alpha = 0.15,
+    linewidth = 0.3
+  ) +
+  stat_summary(
+    aes(group = Group),
+    fun = mean,
+    geom = "line",
+    linewidth = 1.5
+  ) +
+  scale_color_manual(
+    values = c(
+      "Control" = "#D55E00",
+      "Treatment" = "#0072B2"
+    )
+  ) +
+  labs(
+    y = "PCL-5 Score",
+    caption = "Thin lines represent individuals. Thick lines represent group means."
+  ) +
+  theme_classic()
+
+ggsave(
+  "outputs/Figure7_Spaghetti.png",
+  p7,
+  width = 6,
+  height = 4,
+  dpi = 300
+)
+
+# =========================================================
+# 11. UPSET PLOT OF COMORBIDITY
+# =========================================================
+
+comorbidity <- df %>%
+  select(
+    PTSDstatusBaseline,
+    DepressionstatusBaseline,
+    AnxietystatusBaseline,
+    BurnoutBinary
+  ) %>%
+  rename(
+    Burnout = BurnoutBinary
+  )
+
+png(
+  "outputs/Figure8_UpSet.png",
+  width = 8,
+  height = 5,
+  units = "in",
+  res = 300
+)
+
+upset(
+  comorbidity,
+  sets = c(
+    "PTSDstatusBaseline",
+    "DepressionstatusBaseline",
+    "AnxietystatusBaseline",
+    "Burnout"
+  ),
+  order.by = "freq",
+  mainbar.y.label = "Number of Participants",
+  sets.x.label = "Condition Prevalence"
+)
+
+dev.off()
+
+# =========================================================
+# END OF SCRIPT
+# =========================================================
