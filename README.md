@@ -60,19 +60,21 @@ This repository includes the full set of analytical and reporting outputs:
 
 | Baseline prevalence | Symptom reduction |
 |------|------|
-| ![Baseline prevalence](Visualizations/Figure1_Baseline.png) | ![Symptom reduction](Visualiuzations/) |
+| ![Baseline prevalence](Study%20Visualizations/Visualizations/Figure1_Baseline.png) | ![Symptom reduction](Study%20Visualizations/Visualiuzations/Figure2_GroupTime.png) |
 | **Variation in PTSD scores** | **Remission outcomes** |
-| ![Variation in PTSD scores](Visualiuzations/) | ![Remission outcomes](Visualiuzations/) |
+| ![Variation in PTSD scores](Study%20Visualizations/Visualiuzations/Figure3_Raincloud.png) | ![Remission outcomes](Study%20Visualizations/Visualiuzations/Figure4_Remission.png) |
 | **Clinical transitions** | **Magnitude of treatment effect** |
-| ![Clinical transitions](Visualiuzations/) | ![Magnitude of treatment effect](Visualiuzations/) |
+| ![Clinical transitions](Study%20Visualizations/Visualiuzations/Figure5_Crossover.png) | ![Magnitude of treatment effect](Study%20Visualizations/Visualiuzations/Figure6_Forest.png) |
 | **Participant trajectories** | **PTSD and its comorbidities** |
-| ![Participant trajectories](Visualiuzations/) | ![PTSD and its comorbidities](Visualiuzations/) |
+| ![Participant trajectories](Study%20Visualizations/Visualiuzations/Figure7_Spaghetti.png) | ![PTSD and its comorbidities](Study%20Visualizations/Visualiuzations/Figure8_UpSet.png) |
 
-  👉 *[View the R visualization script](Visualizations/Ruth Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20|%20R%20Script).txt)* 
+Documentation 
+
+  👉 *[View the R visualization script](Study%20Visualizations/Visualization%20Documentation/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20|%20R%20Script).txt)* 
 
   A reproducible analysis script for the visualizations in R. 
   
-  👉 *[View the R visualization report](Visualizations/Ruth Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20with%20R).pdf)*
+  👉 *[View the R visualization report](Study%20Visualizations/Visualization%20Documentation/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20with%20R).pdf)*
 
   A visualization report explaining the analytical rationale behind each   figure, interpretation of visual findings, statistical meaning of observed patterns, and clinical relevance of intervention outcomes. 
 
