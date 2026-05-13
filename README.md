@@ -2,7 +2,7 @@
 
 ![EMDR Therapy for PTSD Treatment Analysis Project Portfolio](Assets/EMDR%20thumbnail.png) 
 
-📊 EMDR Therapy for PTSD Treatment Analysis
+## 📊 EMDR Therapy for PTSD Treatment Analysis
 
 This repository presents the statistical analysis of a quasi-experimental longitudinal study evaluating the effectiveness of EMDR therapy on PTSD among ICU healthcare professionals.
 
@@ -15,7 +15,7 @@ This repository presents the statistical analysis of a quasi-experimental longit
   The analysis evaluates intervention effectiveness and translates findings into actionable insights for mental health programming.
 
 
-📈 Key Insight
+## 📈 Key Insight
 
 The intervention demonstrated substantial reductions in PTSD symptoms over time, with strong differences observed between treatment and control groups and high remission rates in the treatment group.
 
@@ -59,16 +59,16 @@ This repository includes the full set of analytical and reporting outputs:
     - and baseline comorbidity patterns.
 
 | Baseline prevalence | Symptom reduction |
-|------|------|
-| ![Baseline prevalence](Study%20Visualizations/Visualizations/Figure1_Baseline.png) | ![Symptom reduction](Study%20Visualizations/Visualiuzations/Figure2_GroupTime.png) |
+|:------:|:------:|
+| ![Baseline prevalence](Study%20Visualizations/Visualizations/Figure1_Baseline.png) | ![Symptom reduction](Study%20Visualizations/Visualizations/Figure2_GroupTime.png)|
 | **Variation in PTSD scores** | **Remission outcomes** |
-| ![Variation in PTSD scores](Study%20Visualizations/Visualiuzations/Figure3_Raincloud.png) | ![Remission outcomes](Study%20Visualizations/Visualiuzations/Figure4_Remission.png) |
-| **Clinical transitions** | **Magnitude of treatment effect** |
-| ![Clinical transitions](Study%20Visualizations/Visualiuzations/Figure5_Crossover.png) | ![Magnitude of treatment effect](Study%20Visualizations/Visualiuzations/Figure6_Forest.png) |
-| **Participant trajectories** | **PTSD and its comorbidities** |
-| ![Participant trajectories](Study%20Visualizations/Visualiuzations/Figure7_Spaghetti.png) | ![PTSD and its comorbidities](Study%20Visualizations/Visualiuzations/Figure8_UpSet.png) |
+| ![Variation in PTSD scores](Study%20Visualizations/Visualizations/Figure3_Raincloud.png) | ![Remission outcomes](Study%20Visualizations/Visualizations/Figure4_Remission.png) |
+| **Individual participant clinical transitions** | **Magnitude of treatment effect** |
+| ![Clinical transitions](Study%20Visualizations/Visualizations/Figure5_Crossover.png) | ![Magnitude of treatment effect](Study%20Visualizations/Visualizations/Figure6_Forest.png) |
+| **Individual participant trajectories** | **Occurrence of PTSD and its comorbidities** |
+| ![Participant trajectories](Study%20Visualizations/Visualizations/Figure7_Spaghetti.png) | ![PTSD and its comorbidities](Study%20Visualizations/Visualizations/Figure8_UpSet.png) |
 
-Documentation 
+**Documentation** 
 
   👉 *[View the R visualization script](Study%20Visualizations/Visualization%20Documentation/Ruth%20Ushindi%20-%20EMDR%20Intervention%20Cameroon%20Data%20Analysis%20Portfolio%20(Visualizations%20|%20R%20Script).txt)* 
 
@@ -79,7 +79,7 @@ Documentation
   A visualization report explaining the analytical rationale behind each   figure, interpretation of visual findings, statistical meaning of observed patterns, and clinical relevance of intervention outcomes. 
 
   
-⚙️ Methods (Summary)
+## ⚙️ Methods (Summary)
 
   1. Repeated Measures ANOVA
 
@@ -88,24 +88,24 @@ Documentation
   3. General Linear Models
 
 
-🔒 Data Availability
+## 🔒 Data Availability
 
 > The dataset contains sensitive health-related information and is not publicly shared to ensure confidentiality and adherence to ethical research standards.
 
 A structured description of the dataset and analytical approach is provided to support transparency.
 
-📂 Dataset Description
+ ### 📂 Dataset Description
 
  👉 *[View Data Description](Study%20Data/Data%20Description)*
 
   Overview of dataset structure, variables, and study design (no raw data shared).
 
 
-💡 Why This Project Matters
+## 💡 Why This Project Matters
 
 This work demonstrates the application of longitudinal and quasi-experimental analysis to evaluate intervention effectiveness and support evidence-based decision-making in healthcare settings.
 
-📥 Service Request 
+## 📥 Service Request 
 
 If you would like my assistance with a similar project, reach out through the link below. 
 
